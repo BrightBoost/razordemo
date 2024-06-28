@@ -1,0 +1,38 @@
+﻿@page
+@using RazorDemo.Models;
+@model RazorDemo.Pages.TodoListModel
+@{
+
+
+    <h1>My todos</h1>
+    <form method="post">
+        <input type="number" name="id" />
+        <input type="text" name="title" />
+        <input type="text" name="description" />
+        <input type="number" name="priority" />
+        <button type="submit">Add todo</button>
+    </form>
+    @if (Model.Todos.Count != 0)
+    {
+        <table class="table">
+            <thead>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+            </thead>
+            <tbody>
+                @foreach (Todo todo in Model.Todos)
+                {
+                    <tr>
+                        <td>@todo.Id</td>
+                        <td>@todo.Title</td>
+                        <td>@todo.Description</td>
+                        <td>@todo.Priority</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+}
